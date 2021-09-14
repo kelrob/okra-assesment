@@ -1,23 +1,22 @@
 const axios = require("axios");
 const ServicesController = {};
 
-//axios.create({ baseUrl: "https://api.okra.ng/v2/mock-api/" });
-
-ServicesController.index = async (req, res) => {
+ServicesController.fetchBalance = async (req, res) => {
   try {
+    let data = {
+      id: 573839293,
+    };
     axios
-      .post("https://api.okra.ng/v2/mock-api/", {
-        id: "573839293",
+      .post("https://api.okra.ng/v2/mock-api/fetch-wallet", data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
       })
-      .then((data) => {
-        return res.json(data);
+      .then((response) => {
+        return res.json(response.data);
       })
       .catch((err) => {
-        return res.status(500).json({
-          error: true,
-          message: "An error Occured",
-          data: err.toString(),
-        });
+        return res.status(500).json(err.response.data);
       });
   } catch (err) {
     return res.status(500).json({
