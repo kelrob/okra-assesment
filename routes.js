@@ -3,7 +3,8 @@ const ServicesController = require("./Controllers/ServicesController");
 
 const Endpoints = function (router) {
   router.get("/", PublicController.index);
-  router.get("/fetch-balance", ServicesController.fetchBalance);
+  router.post("/fetch-balance", ServicesController.fetchBalance);
+  router.post("/refund-customer", ServicesController.refundCustomer);
 
   return router;
 };
