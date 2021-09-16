@@ -5,6 +5,7 @@ const QuestionOneController = require("./Controllers/QuestionOneController");
 const Endpoints = function (router) {
   router.get("/", PublicController.index);
   router.get("/dashboard", PublicController.dashboard);
+  router.get("/refresh-balance/:id", PublicController.refreshBalance);
   router.get("/logout", PublicController.logout);
   router.get("/api", PublicController.apiHealthCheck);
   router.post("/api/refund-customer", ServicesController.refundCustomer);

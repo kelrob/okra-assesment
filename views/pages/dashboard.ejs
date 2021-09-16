@@ -9,11 +9,18 @@
       <p>Name: <%= data.data.profile.name %></p>
       <p>Id: <%= data.data.profile.id %></p>
       <p>
-        Wallet Amount: <%= data.data.profile.wallet.currency %> <%=
-        data.data.profile.wallet.amount %>
+        Wallet Amount: <%= data.data.profile.wallet.currency %> <% if
+        ('newAmount' in data) { %> <%=data.newAmount %> <% } else { %>
+        <%=data.data.profile.wallet.amount %> <% } %>
       </p>
       <p>
         <small><a href="logout">Logout</a></small>
+        &nbsp; &nbsp;
+        <small
+          ><a href="refresh-balance/<%= data.data.profile.id  %> "
+            >Refresh Balance</a
+          ></small
+        >
       </p>
     </div>
   </body>
