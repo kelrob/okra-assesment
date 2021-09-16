@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+var session = require("express-session");
 const routes = require("./routes");
 
 const app = express();
@@ -8,11 +9,11 @@ const router = express.Router();
 
 app.use(cors());
 app.use(express.json());
+app.use(session({ secret: "0KRA!$", saveUninitialized: true, resave: true }));
 app.use(express.urlencoded({ extended: true }));
-app.use("/api", routes(router));
+app.use("/", routes(router));
 
-app.get("/", (req, res) => {
-  res.redirect("https://okra-dev.herokuapp.com/api");
-});
+// set the view engine to ejs
+app.set("view engine", "ejs");
 
 app.listen(port, () => console.log("App running on port " + port));

@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <%- include('../partials/head'); %>
+  </head>
+  <body class="container">
+    <!-- Error Message -->
+    <% if (typeof data === 'object' && data.status === "error") { %>
+    <span class="error-message"><%= data.message %></span>
+
+    <!-- Success Message -->
+    <% } %> <% if (typeof data === 'object' && data.status === "success") { %>
+    <span class="success-message"><%= data.message %></span>
+    <% } %>
+
+    <form class="budget-card" method="POST">
+      <h1>Login to continue managing your budget</h1>
+      <label>Username</label>
+      <input type="text" name="username" />
+      <label>Password</label>
+      <input type="password" name="password" />
+      <button type="submit">Login</button>
+    </form>
+    <%- include('../partials/scripts'); %>
+  </body>
+</html>

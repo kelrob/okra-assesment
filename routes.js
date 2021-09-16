@@ -4,8 +4,14 @@ const QuestionOneController = require("./Controllers/QuestionOneController");
 
 const Endpoints = function (router) {
   router.get("/", PublicController.index);
-  router.post("/refund-customer", ServicesController.refundCustomer);
-  router.get("/question-one", QuestionOneController.index);
+  router.get("/dashboard", PublicController.dashboard);
+  router.get("/logout", PublicController.logout);
+  router.get("/api", PublicController.apiHealthCheck);
+  router.post("/api/refund-customer", ServicesController.refundCustomer);
+  router.get("/api/question-one", QuestionOneController.index);
+
+  // Form Submission
+  router.post("/", PublicController.login);
 
   return router;
 };
